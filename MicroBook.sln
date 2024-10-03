@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBook", "MicroBook\MicroBook.csproj", "{A589A485-A881-46E3-9220-B62778901F8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroBook.Host", "MicroBook\MicroBook.Host.csproj", "{A589A485-A881-46E3-9220-B62778901F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBook.Domain", "MicroBook.Domain\MicroBook.Domain.csproj", "{A25C48A1-3068-4F53-A79B-32F2F2BF2A94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBook.Application", "MicroBook.Application\MicroBook.Application.csproj", "{D9BEE562-C845-48B6-97A1-BF7B4B875E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBook.PostgreSQL", "MicroBook.PostgreSQL\MicroBook.PostgreSQL.csproj", "{1F0521C7-1F52-4159-82D1-C33E02F4C344}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{A589A485-A881-46E3-9220-B62778901F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A589A485-A881-46E3-9220-B62778901F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A589A485-A881-46E3-9220-B62778901F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25C48A1-3068-4F53-A79B-32F2F2BF2A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25C48A1-3068-4F53-A79B-32F2F2BF2A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25C48A1-3068-4F53-A79B-32F2F2BF2A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25C48A1-3068-4F53-A79B-32F2F2BF2A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9BEE562-C845-48B6-97A1-BF7B4B875E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BEE562-C845-48B6-97A1-BF7B4B875E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BEE562-C845-48B6-97A1-BF7B4B875E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BEE562-C845-48B6-97A1-BF7B4B875E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0521C7-1F52-4159-82D1-C33E02F4C344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0521C7-1F52-4159-82D1-C33E02F4C344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0521C7-1F52-4159-82D1-C33E02F4C344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0521C7-1F52-4159-82D1-C33E02F4C344}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
