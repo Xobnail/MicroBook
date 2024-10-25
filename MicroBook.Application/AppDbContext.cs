@@ -1,7 +1,7 @@
 ﻿using MicroBook.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace MicroBook.PostgreSQL;
+namespace MicroBook.Application;
 
 /// <summary>
 /// Contains MicroBook DbSet.

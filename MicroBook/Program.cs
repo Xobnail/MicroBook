@@ -1,4 +1,5 @@
-using MicroBook.PostgreSQL;
+using MassTransit;
+using MicroBook.Application;
 using Microsoft.AspNetCore.Authentication.Certificate;
 
 namespace MicroBook;
@@ -16,10 +17,40 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        builder.Services.AddStackExchangeRedisCache(redisOptions =>
+        {
+            var connectionString = builder.Configuration.GetConnectionString("Redis");
+            redisOptions.Configuration = connectionString;
+        });
+
+        builder.Services.AddMassTransit(configure =>
+        {
+            configure.AddConsumer<BooksConsumer>();
+
+            configure.SetKebabCaseEndpointNameFormatter();
+
+            configure.UsingRabbitMq((context, cfg) =>
+            {
+                cfg.Host(new Uri(builder.Configuration["RabbitMQ:Host"]!), h =>
+                {
+                    h.Username(builder.Configuration["RabbitMQ:Username"]!);
+                    h.Password(builder.Configuration["RabbitMQ:Password"]!);
+                });
+
+                cfg.ReceiveEndpoint(builder.Configuration["RabbitMQ:Queues:Books"]!, e =>
+                {
+                    e.Bind(builder.Configuration["RabbitMQ:Exchanges:Books"]!);
+
+                    e.ConfigureConsumer<BooksConsumer>(context);
+                });
+
+                cfg.ConfigureEndpoints(context);
+            });
+        });
+
         builder.Services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate();
 
-        builder.Services.AddDatabase(builder.Configuration.GetConnectionString("DefaultConnection")!);
-        builder.Services.AddRepositories();
+        builder.Services.AddApplication(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
         var app = builder.Build();
 
