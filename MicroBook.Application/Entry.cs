@@ -16,7 +16,7 @@ public static class Entry
     /// </summary>
     /// <param name="services">Services to add to.</param>
     /// <param name="connectionString">Connection string for db.</param>
-    /// <returns>Same service collection.</returns>
+    /// <returns>The same service collection.</returns>
     public static IServiceCollection AddApplication(this IServiceCollection services, string connectionString)
     {
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));

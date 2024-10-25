@@ -1,14 +1,12 @@
 ﻿using MicroBook.Domain.Abstractions;
 using MicroBook.Domain.Entities;
-using Microsoft.AspNetCore.Connections;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System.Text;
 
 namespace MicroBook.Host.Controllers;
 
+/// <summary>
+/// Controller for working with books.
+/// </summary>
 public class BooksController : ControllerBase
 {
     private readonly IBooksRepository _booksRepository;
@@ -18,6 +16,11 @@ public class BooksController : ControllerBase
         _booksRepository = booksRepository;
     }
 
+    /// <summary>
+    /// Gets books.
+    /// </summary>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>A list of books.</returns>
     [HttpGet]
     [Route("Books/GetBooks")]
     public async Task<IActionResult> GetBooksAsync(CancellationToken cancellationToken)
@@ -25,6 +28,12 @@ public class BooksController : ControllerBase
         return Ok(await _booksRepository.GetBooksAsync(cancellationToken));
     }
 
+    /// <summary>
+    /// Creates a book.
+    /// </summary>
+    /// <param name="book">Book to create.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Created book.</returns>
     [HttpPost]
     [Route("Books/CreateBook")]
     public async Task<IActionResult> CreateBookAsync(Book book, CancellationToken cancellationToken)
@@ -44,6 +53,12 @@ public class BooksController : ControllerBase
         return BadRequest();
     }
 
+    /// <summary>
+    /// Updates a book.
+    /// </summary>
+    /// <param name="book">Book to update.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Updated book.</returns>
     [HttpPost]
     [Route("Books/UpdateBook")]
     public async Task<IActionResult> UpdateBookAsync(Book book, CancellationToken cancellationToken)
@@ -63,6 +78,12 @@ public class BooksController : ControllerBase
         return BadRequest();
     }
 
+    /// <summary>
+    /// Deletes a book.
+    /// </summary>
+    /// <param name="idToDelete">Book Id to delete.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The result of removal.</returns>
     [HttpPost]
     [Route("Books/DeleteBook")]
     public async Task<IActionResult> DeleteBookAsync(int idToDelete, CancellationToken cancellationToken)

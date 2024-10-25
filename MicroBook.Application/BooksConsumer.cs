@@ -4,6 +4,9 @@ using MicroBook.Contracts;
 
 namespace MicroBook.Application;
 
+/// <summary>
+/// Consumer for updating book after order.
+/// </summary>
 public class BooksConsumer : IConsumer<UpdateBook>
 {
     private readonly IBooksRepository _booksRepository;
