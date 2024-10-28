@@ -17,32 +17,32 @@ public class Order
     /// <summary>
     /// Order time.
     /// </summary>
-    public DateTime OrderTime { get; set; }
+    public DateTime? OrderTime { get; set; }
 
     /// <summary>
     /// Customer.
     /// </summary>
     [ForeignKey("Id")]
-    public Customer Customer { get; set; } = new Customer();
+    public Customer? Customer { get; set; }
 
     /// <summary>
     /// Customer Id.
     /// </summary>
-    public int CustomerId { get; set; }
+    public int? CustomerId { get; set; }
 
     /// <summary>
     /// Book.
     /// </summary>
     [ForeignKey("Id")]
-    public Book Book { get; set; } = new Book();
+    public Book? Book { get; set; }
 
     /// <summary>
     /// Book Id.
     /// </summary>
-    public int BookId { get; set; }
+    public int? BookId { get; set; }
 
     /// <summary>
     /// Destination.
     /// </summary>
-    public string Destination { get; set; } = string.Empty;
+    public string? Destination { get; set; }
 }

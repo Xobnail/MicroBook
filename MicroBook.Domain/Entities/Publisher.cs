@@ -16,20 +16,25 @@ public class Publisher
     /// <summary>
     /// Publisher name.
     /// </summary>
-    public string? Name { get; set; } = string.Empty;
+    public string? Name { get; set; }
 
     /// <summary>
     /// Publisher ISBN.
     /// </summary>
-    public string? ISBN { get; set; } = string.Empty;
+    public string? ISBN { get; set; }
 
     /// <summary>
     /// Publisher site.
     /// </summary>
-    public string? Site { get; set; } = string.Empty;
+    public string? Site { get; set; }
 
     /// <summary>
     /// Publisher foundation date.
     /// </summary>
     public DateTime? FoundationDate { get; set; }
+
+    /// <summary>
+    /// One to many relationship with books.
+    /// </summary>
+    public ICollection<Book> Books { get; set; } = [];
 }

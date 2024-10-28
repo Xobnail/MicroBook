@@ -4,6 +4,7 @@ using MicroBook.Domain.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using MicroBook.Application.Data;
 
 namespace MicroBook.Application.Repositories;
 

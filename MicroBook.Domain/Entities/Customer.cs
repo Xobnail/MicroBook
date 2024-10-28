@@ -16,20 +16,25 @@ public class Customer
     /// <summary>
     /// Customer name.
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string? Name { get; set; }
 
     /// <summary>
     /// Customer address.
     /// </summary>
-    public string Address { get; set; } = string.Empty;
+    public string? Address { get; set; }
 
     /// <summary>
     /// Customer Email.
     /// </summary>
-    public string Email { get; set; } = string.Empty;
+    public string? Email { get; set; }
 
     /// <summary>
     /// Customer phone number.
     /// </summary>
-    public string Phone { get; set; } = string.Empty;
+    public string? Phone { get; set; }
+
+    /// <summary>
+    /// One to many relationship with Orders.
+    /// </summary>
+    public ICollection<Order> Orders { get; set; } = [];
 }

@@ -16,7 +16,7 @@ public class Author
     /// <summary>
     /// Author name.
     /// </summary>
-    public string? Name { get; set; } = string.Empty;
+    public string? Name { get; set; }
 
     /// <summary>
     /// Author's date of birth.
@@ -27,4 +27,9 @@ public class Author
     /// Author's date of death.
     /// </summary>
     public DateTime? DateOfDeath { get; set; }
+
+    /// <summary>
+    /// One to many relationship with books.
+    /// </summary>
+    public ICollection<Book> Books { get; set; } = [];
 }

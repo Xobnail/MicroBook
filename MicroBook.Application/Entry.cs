@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MicroBook.Application.Data;
 using MicroBook.Application.Repositories;
 using MicroBook.Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,8 @@ public static class Entry
     /// <returns>The same service collection.</returns>
     public static IServiceCollection AddApplication(this IServiceCollection services, string connectionString)
     {
-        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
+        services.AddDbContext<AppDbContext>(options => 
+            options.UseNpgsql(connectionString, b => b.MigrationsAssembly("MicroBook.Host")));
         services.AddScoped<IBooksRepository, BooksRepository>();
 
         return services;
