@@ -19,7 +19,7 @@ public static class MockData
             {
                 Id = 1,
                 Name = "J. R. R. Tolkien",
-                DateOfBirth = new DateTime(1892, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                DateOfBirth = new DateTime(1111, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
                 DateOfDeath = new DateTime(1973, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
             },
             new Author

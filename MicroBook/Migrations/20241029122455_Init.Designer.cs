@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MicroBook.Host.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241028081906_Initial")]
-    partial class Initial
+    [Migration("20241029122455_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ namespace MicroBook.Host.Migrations
                         new
                         {
                             Id = 1,
-                            DateOfBirth = new DateTime(1892, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateOfBirth = new DateTime(1111, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
                             DateOfDeath = new DateTime(1973, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "J. R. R. Tolkien"
                         },

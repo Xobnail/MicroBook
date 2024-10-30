@@ -1,5 +1,6 @@
 using MassTransit;
 using MicroBook.Application;
+using MicroBook.Host.Migrations;
 using Microsoft.AspNetCore.Authentication.Certificate;
 
 namespace MicroBook;
@@ -10,19 +11,18 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        // Add distributed cache
         builder.Services.AddStackExchangeRedisCache(redisOptions =>
         {
             var connectionString = builder.Configuration.GetConnectionString("Redis");
             redisOptions.Configuration = connectionString;
         });
 
+        // Add message broker
         builder.Services.AddMassTransit(configure =>
         {
             configure.AddConsumer<BooksConsumer>();
@@ -50,15 +50,17 @@ public class Program
 
         builder.Services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate();
 
+        // Add application layer
         builder.Services.AddApplication(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+
+            app.ApplyMigrations();
         }
 
         app.UseHttpsRedirection();

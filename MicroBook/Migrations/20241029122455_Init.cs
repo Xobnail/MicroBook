@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MicroBook.Host.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -128,7 +128,7 @@ namespace MicroBook.Host.Migrations
                 columns: new[] { "Id", "DateOfBirth", "DateOfDeath", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1892, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1973, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc), "J. R. R. Tolkien" },
+                    { 1, new DateTime(1111, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1973, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc), "J. R. R. Tolkien" },
                     { 2, new DateTime(1947, 9, 21, 0, 0, 0, 0, DateTimeKind.Utc), null, "Stephen King" },
                     { 3, new DateTime(1965, 7, 31, 0, 0, 0, 0, DateTimeKind.Utc), null, "J. K. Rowling" },
                     { 4, new DateTime(1948, 9, 20, 0, 0, 0, 0, DateTimeKind.Utc), null, "George R. R. Martin" },

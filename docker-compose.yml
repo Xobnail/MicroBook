@@ -1,0 +1,88 @@
+version: '3.4'
+
+services:
+    postgres:
+        image: postgres:latest
+        restart: always
+        container_name: postgres
+        environment:
+            POSTGRES_DB: "MicroBook"
+            POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "postgres"
+        ports:
+            - "5432:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        networks:
+            - microbook_network
+    
+    redis:
+        image: redis:latest
+        restart: always
+        container_name: redis
+        ports:
+            - "6379:6379"
+        volumes: 
+            - redis_data:/data
+        healthcheck:
+            test: ["CMD-SHELL", "redis-cli ping | grep 'PONG'"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        networks:
+            - microbook_network
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        restart: always
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        environment:
+            RABBITMQ_DEFAULT_USER: admin
+            RABBITMQ_DEFAULT_PASS: admin
+        volumes:
+            - rabbitmq_data:/var/lib/rabbitmq
+        healthcheck:
+            test: rabbitmq-diagnostics -q ping
+            interval: 30s
+            timeout: 30s
+            retries: 3
+        networks:
+            - microbook_network
+
+
+    microbook.host:
+        image: ${DOCKER_REGISTRY-}microbookhost
+        container_name: microbook.host
+        build:
+            context: .
+            dockerfile: MicroBook/Dockerfile
+        ports:
+            - "8080:8080"
+            - "8081:8081"
+        depends_on:
+            postgres:
+                condition: service_healthy
+            redis:
+                condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
+        networks:
+            - microbook_network
+
+volumes:
+    redis_data:
+    rabbitmq_data:
+    postgres_data:
+    
+networks:
+    microbook_network:
+        name: microbook_network
+        driver: bridge

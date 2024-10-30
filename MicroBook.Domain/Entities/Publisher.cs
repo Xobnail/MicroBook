@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MicroBook.Domain.Entities;
 
@@ -36,5 +37,6 @@ public class Publisher
     /// <summary>
     /// One to many relationship with books.
     /// </summary>
+    [JsonIgnore]
     public ICollection<Book> Books { get; set; } = [];
 }

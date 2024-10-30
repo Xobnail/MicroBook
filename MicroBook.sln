@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroBook.Domain", "MicroBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroBook.Application", "MicroBook.Application\MicroBook.Application.csproj", "{D9BEE562-C845-48B6-97A1-BF7B4B875E2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroBook.Contracts", "MicroBook.Contracts\MicroBook.Contracts.csproj", "{890B7941-1A47-495A-9AFB-E42A7F88E5C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroBook.Contracts", "MicroBook.Contracts\MicroBook.Contracts.csproj", "{890B7941-1A47-495A-9AFB-E42A7F88E5C3}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{60D5B7E0-6C17-4E78-8C43-9BB68FF15F20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{890B7941-1A47-495A-9AFB-E42A7F88E5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{890B7941-1A47-495A-9AFB-E42A7F88E5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{890B7941-1A47-495A-9AFB-E42A7F88E5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D5B7E0-6C17-4E78-8C43-9BB68FF15F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D5B7E0-6C17-4E78-8C43-9BB68FF15F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D5B7E0-6C17-4E78-8C43-9BB68FF15F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D5B7E0-6C17-4E78-8C43-9BB68FF15F20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
